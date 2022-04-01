@@ -1,0 +1,16 @@
+flyway:
+  enabled: true
+  check-location: true
+  locations: classpath:db/migration
+  sql-migration-prefix: V
+  sql-migration-suffix: .sql
+  sqlMigrationSeparator: __
+  baseline-on-migrate: true
+  validateOnMigrate: true
+jpa:
+  show-sql: false
+  properties:
+    hibernate:
+      dialect: com.siemens.isb.svc.scheduler.config.MySql5CustomInnoDbDialect
+  hibernate:
+    ddl-auto: validate
