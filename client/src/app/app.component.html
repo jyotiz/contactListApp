@@ -1,0 +1,30 @@
+<div class="content" role="main">
+
+  <!-- Highlight Card -->
+  <div class="card highlight-card card-small">
+
+
+    <h1>{{ title }}</h1>
+    <input type="text" id="searchFilter" class="form-control app-input-search" placeholder="Search"
+      [(ngModel)]="searchRule" />
+    <ng-container
+      *ngFor="let item of users  | searchPipe: searchRule:{ key: 'name' } | paginate: { id: 'contactListPagination', itemsPerPage: recordsPerPage, currentPage: currentPage }">
+      <div class="list row">
+        <img class="col-3 img" [src]="getSantizeUrl(item.url)" />
+        <p class="col-6">{{item.name}}</p>
+        <br>
+
+      </div>
+    </ng-container>
+
+    <div class="rule-list-pagination col-12">
+      <pagination-controls id="contactListPagination" class="float-right" (pageChange)="pageClick($event)"
+        [autoHide]="true" previousLabel="PREV" nextLabel="NEXT"></pagination-controls>
+    </div>
+
+  </div>
+</div>
+
+
+
+<router-outlet></router-outlet>
